@@ -11,7 +11,6 @@
         ?>
         <div class="col-md-7 rep-content">
           <article id="post-<?php the_ID(); ?>" <?php post_class("rep-article"); ?>>
-            <?php if ( has_post_thumbnail() ): the_post_thumbnail(); endif; ?>
             <h1><?php the_title(); ?></h1>
             <?php the_content(); ?>
           </article>
@@ -26,7 +25,7 @@
     <?php endif; ?>  
     <div class="col-md-3">
       <?php include 'snippets/eu_sidebar.php';?>
-    </div>    
+    </div>
   </div>
 </div>  <!-- end container -->
 <?php get_footer(); ?>

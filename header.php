@@ -77,7 +77,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            tjo
+            Donec id elit non mi porta <a href="/">gravida at eget metus</a>. Vestibulum id ligula porta felis euismod semper.
           </div>
         </div>
       </div>

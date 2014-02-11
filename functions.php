@@ -10,6 +10,8 @@
  * @since Egenutgivare 1.0
  */
 include_once 'bin/eu_posttypes.php';
+include_once get_template_directory() . "/bin/ReptiloCarousel.php";
+//include_once get_template_directory()."/bin/ReptiloFAQ.php";
 
 /**
  * Display posts from a post type.
@@ -32,7 +34,7 @@ include_once 'bin/eu_posttypes.php';
  * @param int $nbr
  * @param boolean $random
  */
-function printPostsPerPosttype($posttype = 'litteraturtips', $nbr = 1, $random = false) {
+function printPostsPerPosttype($posttype = 'litteraturtips', $nbr = 1, $random = false, $nbrDigits = 40) {
   global $post;
   $args = array('post_type' => $posttype, 'posts_per_page' => $nbr);
   if ($random) {
@@ -40,18 +42,31 @@ function printPostsPerPosttype($posttype = 'litteraturtips', $nbr = 1, $random =
   }
   $loop = new WP_Query($args);
   if ($loop->have_posts()):
+    $i = 0;
     while ($loop->have_posts()) : $loop->the_post();
-      //$content = mb_substr(get_the_content(), 0, $nbrDigits) . '...';
-      $content = get_the_excerpt();
+      if($i % 2 == 0){
+        $zebra_class = 'zebra'; 
+      } else {
+        $zebra_class = ''; 
+      }
+      $i++;  
+      $content = mb_substr(get_the_excerpt(), 0, $nbrDigits) . '...';
       $title = get_the_title();
-      $guid = get_the_guid();
+      $guid = get_permalink();;
+      $img = '';
+      if (has_post_thumbnail()) {
+        $img = get_the_post_thumbnail();
+      }
       $readingbox .= <<<RB
-<div class="cat-container">
-  <section>
-    <h2>Aktuellt just nu: <span>$title</span></h2>
-    <p>$content</p>
-    <a href="$guid" target="" class="btn btn-default btn-xs">Läs mer</a>
-  </section>
+<div class="posttype-container $zebra_class">
+    <div class="posttype-img">
+      $img
+    </div>        
+    <div class="posttype-content">
+      $title
+      $content
+    </div>
+    <a href="$guid" target="" class="">Läs mer om boken</a>
 </div>
 RB;
     endwhile;
@@ -68,7 +83,7 @@ RB;
  * @param type $category  - the slug
  * @param type $nbr - nbr of posts to show
  */
-function eu_printPostsPerCat($category = 'aktuellt', $nbr = 1, $offset = 0, $nbrDigits = 100, $extraclass = '') {
+function eu_printPostsPerCat($category = 'aktuellt', $nbr = 1, $offset = 0, $nbrDigits = 100, $extraclass = '', $nbrDigitsTitle = 30) {
   global $post;
   $nbr = $nbr + $offset;
   $args = array('category_name' => $category, 'posts_per_page' => $nbr);
@@ -77,13 +92,14 @@ function eu_printPostsPerCat($category = 'aktuellt', $nbr = 1, $offset = 0, $nbr
     $i = 0;
     while ($loop->have_posts()) : $loop->the_post();
       if ($i >= $offset) {
-        if($extraclass == 'cat-minimum'){  //small version
-          $content = mb_substr(get_the_excerpt(), 0, $nbrDigits) .' &nbsp;'. '<a href="'.$guid.'" target="" class="">Läs mer...</a>';
-        }else{
-          $content = mb_substr(get_the_excerpt(), 0, $nbrDigits) . '...' . '<br/><a href="'.$guid.'" target="" class="btn btn-default btn-xs">Läs mer</a>';
-        }        
-        $title = get_the_title();
-        $guid = get_the_guid();
+        $guid = get_permalink();
+        if ($extraclass == 'cat-minimum') {  //small version
+          $title = mb_substr(get_the_title(), 0, $nbrDigitsTitle);
+          $content = mb_substr(get_the_excerpt(), 0, $nbrDigits) . ' &nbsp;' . '<a href="' . $guid . '" target="" class="">Läs mer...</a>';
+        } else {
+          $title = get_the_title();
+          $content = mb_substr(get_the_excerpt(), 0, $nbrDigits) . '...' . '<br/><a href="' . $guid . '" target="" class="btn btn-default btn-xs">Läs mer</a>';
+        }
         $modified_date = get_the_modified_date();
         $author = get_the_author();
         $the_tags = '';
@@ -105,10 +121,10 @@ function eu_printPostsPerCat($category = 'aktuellt', $nbr = 1, $offset = 0, $nbr
     <div class="pub-info-small">Av $author</div>
     <div>
       $img
-      <div class="">
+      <div class="cat-content">
         $content
-      <div>
-    <div>
+      </div>
+    </div>
   </section>
 </div>
 RB;

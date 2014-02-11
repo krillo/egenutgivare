@@ -17,6 +17,7 @@ get_header();
             <div class="cat-container-border">
               <?php if (function_exists('printPostsPerCat')) eu_printPostsPerCat('Okategoriserade', 1, 0, 300); ?>
             </div>
+            <a href="/" class="btn btn-primary" style="float:right;">Läs mer av de senaste</a>
           </div>  
           <div class="col-md-4 rep-inner-right">
             <div class="cat-container-border">
@@ -25,9 +26,12 @@ get_header();
             <div class="cat-container-border">
               <?php if (function_exists('printPostsPerCat')) eu_printPostsPerCat('Okategoriserade', 1, 2, 60, 'cat-minimum'); ?>
             </div>
-            <a href="/" class="btn btn-primary">Läs mer av de senaste</a>
+            <div class="cat-container-border">
+              <?php if (function_exists('printPostsPerCat')) eu_printPostsPerCat('Okategoriserade', 1, 3, 60, 'cat-minimum'); ?>
+            </div>
+
           </div>  
-          <div class="col-md-12 xxx">
+          <div class="col-md-12 spotlight">
             Tjo
           </div>
         </div>
@@ -39,17 +43,22 @@ get_header();
 
 
     <div class="col-md-3">
-      <?php global $rc; if (method_exists($rc,'rep_carousel')) $rc->rep_carousel('rep-carousel', false); ?>
-      <?php //global $rc; $rc->rep_carousel('rep-carousel', false); ?>
-    
-
-
-
-      <?php if (function_exists('printPostsPerPosttype')) printPostsPerPosttype('litteraturtips', 1, true); ?>
-      <?php if (function_exists('printPostsPerPosttype')) printPostsPerPosttype('litteraturtips', 1, true); ?>
-      <?php if (function_exists('printPostsPerPosttype')) printPostsPerPosttype('litteraturtips', 1, true); ?>
-      <?php if (function_exists('printPostsPerPosttype')) printPostsPerPosttype('litteraturtips', 1, true); ?>
-      <?php if (function_exists('printPostsPerPosttype')) printPostsPerPosttype('litteraturtips', 1, true); ?>
+      <div class="sidebar-object sidebar-object-no-border">
+        <?php
+        global $rc;
+        if (method_exists($rc, 'rep_carousel'))
+          $rc->rep_carousel('rep-carousel', false);
+        ?>
+      </div>
+      <div class="sidebar-object">
+        <ul>
+<?php if (!function_exists('dynamic_sidebar') || !dynamic_sidebar("sidebar_info")) : endif; ?>   
+        </ul>
+      </div>
+      <div class="sidebar-object">
+        <h3>Litteraturtips</h3>
+<?php if (function_exists('printPostsPerPosttype')) printPostsPerPosttype('litteraturtips', 5, true); ?>
+      </div>
     </div>
   </div>
 </div>

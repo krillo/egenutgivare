@@ -12,8 +12,8 @@
             <article id="post-<?php the_ID(); ?>" class="col-md-12">
               <header>
                 <h2><?php the_title(); ?></h2>
+                <div class="pub-info"><i class="fa fa-calendar"></i><time pubdate="pubdate"><?php the_modified_date(); ?></time> | <?php the_category(', '); ?></div>
               </header>
-              <?php if ( has_post_thumbnail() ): the_post_thumbnail(); endif; ?>
               <div class="archive-content"><?php the_excerpt(); ?>
                 <a href="<?php the_guid(); ?>"> Läs mer &raquo;</a>
               </div>
