@@ -11,9 +11,13 @@
         ?>
         <div class="col-md-7 rep-content">
           <article id="post-<?php the_ID(); ?>" <?php post_class("rep-article"); ?>>
-            <?php if ( has_post_thumbnail() ): the_post_thumbnail(); endif; ?>
             <h1><?php the_title(); ?></h1>
-            <?php the_content(); ?>
+            <?php echo wp_get_attachment_image(get_field('bild'), 'profile-thumb');?><br>
+            Yrke: <?php the_field('yrke')?><br>
+            Hemsida: <?php the_field('hemsida')?><br>
+            Email: <?php the_field('email')?><br>
+            Telefon: <?php the_field('telefon')?><br>
+            Om mig: <br><?php the_field('om_mig')?>
           </article>
         </div>  
         <?php
@@ -23,9 +27,9 @@
       <div class="span12">  
         <p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
       </div>
-    <?php endif; ?>  
+      <?php endif; ?>  
     <div class="col-md-3">
-      <?php include 'snippets/eu_sidebar.php';?>
+<?php include 'snippets/eu_sidebar.php'; ?>
     </div>    
   </div>
 </div>  <!-- end container -->

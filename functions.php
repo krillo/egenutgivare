@@ -14,14 +14,12 @@ include_once get_template_directory() . "/bin/ReptiloCarousel.php";
 //include_once get_template_directory()."/bin/ReptiloFAQ.php";
 
 /**
- * Display posts from a post type.
- * 
- * Bootstrap 3 style
- * 
- * @global type $post
- * @param type $category  - the slug
- * @param type $nbr - nbr of posts to show
+ * custom size for images
  */
+if ( function_exists( 'add_image_size' ) ) { 
+	add_image_size('profile-thumb', 250, 180, true);
+	add_image_size('bokomslag', 50, 80, true);
+}
 
 /**
  * Display posts from:
@@ -52,7 +50,7 @@ function printPostsPerPosttype($posttype = 'litteraturtips', $nbr = 1, $random =
       $i++;  
       $content = mb_substr(get_the_excerpt(), 0, $nbrDigits) . '...';
       $title = get_the_title();
-      $guid = get_permalink();;
+      $guid = get_permalink();
       $img = '';
       if (has_post_thumbnail()) {
         $img = get_the_post_thumbnail();
@@ -136,3 +134,60 @@ RB;
   echo $readingbox;
 }
 
+
+
+
+
+/**
+ * Display posts from:
+ * 1. post type
+ * 2. nbr
+ * 3. random order or latest
+ *  
+ * @global Post $post
+ * @param string $posttype
+ * @param int $nbr
+ * @param boolean $random
+ */
+function printSpotlight($posttype = 'uppdragstagare', $nbr = 1, $random = true, $nbrDigits = 400) {
+  global $post;
+  $args = array('post_type' => $posttype, 'posts_per_page' => $nbr);
+  if ($random) {
+    $args['orderby'] = 'rand';
+  }
+  $loop = new WP_Query($args);
+  if ($loop->have_posts()):
+    while ($loop->have_posts()) : $loop->the_post();
+      $content = mb_substr(get_field('om_mig'), 0, $nbrDigits);
+      $name = get_the_title();
+      $guid = get_permalink();
+      $img = wp_get_attachment_image(get_field('bild'), 'profile-thumb');
+      $work = get_field('yrke');
+      $homepage = get_field('hemsida');
+      $email = get_field('e-mail');
+      $phone = get_field('telefon');
+      $readingbox .= <<<RB
+             <div class="spotlight-border">
+             <div class="spotlight">
+              <div class="col-md-8">
+                <div class="spotlight-heading">
+                  <h2>$name</h2><div class="spotlight-info"> - $work</div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="spotlight-contact"><i class="fa fa-home" style="padding-left:0;"></i>$homepage  <i class="fa fa-envelope"></i> $email  <i class="fa fa-phone-square"></i>$phone</div>
+                <div class="spotlight-txt">
+                  $content
+                </div>
+                <a href="$guid" class="btn btn-primary spotlight-button" style="float:left;">Läs mer om $name</a>
+              </div>
+              <div class="col-md-4">
+                $img
+              </div>
+            </div>              
+            </div>              
+RB;
+    endwhile;
+  endif;
+  wp_reset_query();
+  echo $readingbox;
+}
