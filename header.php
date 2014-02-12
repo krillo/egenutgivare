@@ -1,10 +1,10 @@
 <?php
 /**
- * The Header for Theme Helsingborg.
- * WordPress theme based on Bootstrap 3.0.3, http://getbootstrap.com/
+ * The Header for Theme Egenutgivare.
+ * WordPress theme based on Reptilo which is based on Bootstrap 3.0.3, http://getbootstrap.com/
  *
  * @package WordPress
- * @subpackage Helsingborg intranet
+ * @subpackage Egenutgivare
  * @since 2014-01
  */
 ?><!DOCTYPE html>
@@ -41,7 +41,7 @@
                   <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="<?php bloginfo('url'); ?>">
-                  <i class="fa fa-home"></i>
+                  Egenutgivare.nu
                 </a>
               </div>
 

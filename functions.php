@@ -18,7 +18,7 @@ include_once get_template_directory() . "/bin/ReptiloCarousel.php";
  */
 if ( function_exists( 'add_image_size' ) ) { 
 	add_image_size('profile-thumb', 200, 180, true);
-	add_image_size('bokomslag', 50, 80, true);
+	add_image_size('bokomslag', 45, 70, true);
 }
 
 /**
@@ -48,24 +48,23 @@ function printPostsPerPosttype($posttype = 'litteraturtips', $nbr = 1, $random =
         $zebra_class = ''; 
       }
       $i++;  
-      $content = mb_substr(get_the_excerpt(), 0, $nbrDigits) . '...';
       $title = get_the_title();
-      $guid = get_permalink();
-      $img = '';
-      if (has_post_thumbnail()) {
-        $img = get_the_post_thumbnail();
-      }
+      $img = wp_get_attachment_image(get_field('bild'), 'bokomslag');
+      $author = get_field('forfattare');
+      $text = mb_substr(get_field('text'), 0, $nbrDigits);
+      $isbn = get_field('isbn');
       $readingbox .= <<<RB
-<div class="posttype-container $zebra_class">
-    <div class="posttype-img">
-      $img
-    </div>        
-    <div class="posttype-content">
-      $title
-      $content
-    </div>
-    <a href="$guid" target="" class="">Läs mer om boken</a>
-</div>
+        <div class="posttype-container $zebra_class">
+          <div class="posttype-img">
+            $img
+          </div>        
+          <div class="posttype-content">
+            <b>$title</b><br/>
+            $author<br/>
+            $text<br/>
+            <a href="http://clk.tradedoubler.com/click?p=21&a=2214064&g=17284614&url=http://www.adlibris.com/se/product.aspx?isbn=$isbn" target="" class="">Läs mer om boken</a>
+          </div>
+        </div>              
 RB;
     endwhile;
   endif;
@@ -174,7 +173,7 @@ function printSpotlight($posttype = 'uppdragstagare', $nbr = 1, $random = true, 
                   <h2>$name</h2><div class="spotlight-info"> - $work</div>
                 </div>
                 <div class="clearfix"></div>
-                <div class="spotlight-contact"><i class="fa fa-home" style="padding-left:0;"></i>$homepage  <i class="fa fa-envelope"></i> $email  <i class="fa fa-phone-square"></i>$phone</div>
+                <div class="spotlight-contact"><i class="fa fa-home" style="padding-left:0;"></i><a href="$homepage" target="_blank">$homepage</a>  <i class="fa fa-envelope"></i><a href="mailto:$email" target="_blank">$email</a> <i class="fa fa-phone-square"></i><a href="tel:+$phone">$phone</a></div>
                 <div class="spotlight-txt">
                   $content
                 </div>
