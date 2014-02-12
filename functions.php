@@ -17,7 +17,7 @@ include_once get_template_directory() . "/bin/ReptiloCarousel.php";
  * custom size for images
  */
 if ( function_exists( 'add_image_size' ) ) { 
-	add_image_size('profile-thumb', 250, 180, true);
+	add_image_size('profile-thumb', 200, 180, true);
 	add_image_size('bokomslag', 50, 80, true);
 }
 
@@ -109,7 +109,7 @@ function eu_printPostsPerCat($category = 'aktuellt', $nbr = 1, $offset = 0, $nbr
         }
         $img = '';
         if (has_post_thumbnail()) {
-          $img = get_the_post_thumbnail(null, 'thumbnail');
+          $img = get_the_post_thumbnail(null, 'profile-thumb');
         }
         $readingbox .= <<<RB
 <div class="cat-container $extraclass">
