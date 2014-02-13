@@ -11,8 +11,8 @@ Template: reptilo
 
 body{color: #5A5A5A;}
 body.home {background-image: none;padding-top: 50px;}
-#hbg-top {height: 50px;background-color: #c6006e;overflow: hidden;}
-body.home #hbg-top {height: 50px;background-color: #c6006e;overflow: hidden;}
+#hbg-top {height: 50px;background-color: #c6006e;}
+body.home #hbg-top {height: 50px;background-color: #c6006e;}
 body.logged-in .navbar {margin-top: 0;}
 .navbar-default .navbar-nav>li>a {color:#fff;}
 .navbar-default .navbar-brand {color:#fff;}

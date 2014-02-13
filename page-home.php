@@ -6,7 +6,6 @@
  * 
  * Notice! don't forget to copy the header-home 
  */
-//rep_get_header_home();
 get_header();
 ?>
 <div class="container" id="main-container">
