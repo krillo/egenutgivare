@@ -11,36 +11,36 @@ get_header();
 <div class="container" id="main-container">
   <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
       <div class="row">
-        <div  class="col-md-9">
-          <div class="col-md-8 rep-inner-left">
+        <div  class="col-sm-9">
+          <div class="col-sm-8 rep-inner-left">
             <div class="cat-container-border">
-              <?php if (function_exists('printPostsPerCat')) eu_printPostsPerCat('Okategoriserade', 1, 0, 300); ?>
+              <?php if (function_exists('printPostsPerCat')) eu_printPostsPerCat('aktuellt', 1, 0, 300); ?>
             </div>
             <a href="/" class="btn btn-primary" style="float:right;">Läs mer av de senaste</a>
           </div>  
-          <div class="col-md-4 rep-inner-right">
+          <div class="col-sm-4 rep-inner-right">
             <div class="cat-container-border">
-              <?php if (function_exists('printPostsPerCat')) eu_printPostsPerCat('Okategoriserade', 1, 1, 60, 'cat-minimum'); ?>
+              <?php if (function_exists('printPostsPerCat')) eu_printPostsPerCat('aktuellt', 1, 1, 60, 'cat-minimum'); ?>
             </div>
             <div class="cat-container-border">
-              <?php if (function_exists('printPostsPerCat')) eu_printPostsPerCat('Okategoriserade', 1, 2, 60, 'cat-minimum'); ?>
+              <?php if (function_exists('printPostsPerCat')) eu_printPostsPerCat('aktuellt', 1, 2, 60, 'cat-minimum'); ?>
             </div>
             <div class="cat-container-border">
-              <?php if (function_exists('printPostsPerCat')) eu_printPostsPerCat('Okategoriserade', 1, 3, 60, 'cat-minimum'); ?>
+              <?php if (function_exists('printPostsPerCat')) eu_printPostsPerCat('aktuellt', 1, 3, 60, 'cat-minimum'); ?>
             </div>
 
           </div>  
           <div class="row">
-            <div class="col-md-12 ">
-              <?php printSpotlight('uppdragstagare', 1, true, 320); ?>
+            <div class="col-sm-12 ">
+              <?php printSpotlight('uppdragstagare', 1, true, 300); ?>
             </div>
           </div>
 
           <div class="row">
-            <div class="col-md-12 ">
+            <div class="col-sm-12 ">
               <div class="spotlight-border tryckupphandling">
                 <div class="spotlight spotlight-no-footer">
-                  <div class="col-md-12">
+                  <div class="col-sm-12">
                     <div class="spotlight-heading">
                       <h2>Tryckupphandling</h2>
                     </div>
@@ -63,7 +63,7 @@ get_header();
 
 
 
-    <div class="col-md-3">
+    <div class="col-sm-3">
       <div class="sidebar-object sidebar-object-no-border">
         <?php
         global $rc;

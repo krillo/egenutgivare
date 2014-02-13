@@ -10,7 +10,7 @@ get_header();
 ?>
 <div class="container">
   <div class="row post-item">
-    <div class="col-md-12">
+    <div class="col-sm-12">
       Blogg
     </div>
   </div>
@@ -20,7 +20,7 @@ get_header();
     setup_postdata($post);
     ?>
     <div class="row post-item">
-      <div class="col-md-12">
+      <div class="col-sm-12">
         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
           <h2><?php the_title(); ?></h2>
           <div class="pub-info"><i class="fa fa-calendar-o"></i><time pubdate="pubdate"><?php the_modified_date(); ?></time> <i class="fa fa-pencil"></i>Skriven av <?php the_author(); ?> <i class="fa fa-tags"></i><?php the_tags(' '); ?></div>

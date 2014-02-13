@@ -8,6 +8,8 @@ Template: reptilo
 */
 
 @import url("../reptilo/style.css");
+@import url("henric_style.css");
+
 
 body{color: #5A5A5A;}
 body.home {background-image: none;padding-top: 50px;}
@@ -21,6 +23,7 @@ body.logged-in .navbar {margin-top: 0;}
 
 
 #rep-splash-area {padding-top: 10px;padding-bottom: 25px;float: left;}
+#logo a{font-size:60px; color:#418629;}
 
 
 
@@ -113,11 +116,21 @@ a:visited{color: #0092dd;}
 
 
 /** footer **/
-#rep-footer-container{
-  height: 100px;
-  background-image: url("img/footer.png");
-  background-repeat: repeat-x;
-  padding-top: 55px;
+#rep-footer-container{height: 100px;background-image: url("img/footer.png");background-repeat: repeat-x;padding-top: 55px;}
+#rep-footer-center {padding-top: 10px;height:60px;background-image: none;background-color: #130500;color:#fff;}
+#rep-footer-center a{color:#fff;}
+#rep-footer-center a:visited{color:#fff;}
 
-}
-#rep-footer-center {height:50px;background-image: none;background-color: #130500;}
+
+
+.archive-uppdragstagare{margin-bottom: 20px;}
+.archive-uppdragstagare .spotlight-info{padding-left: 0;font-style:italic;font-size: 15px;margin-bottom: 10px;}
+.archive-uppdragstagare h2{font-weight: normal;font-size:25px;border-top:solid 1px #e6e6e6;margin-top: 0;padding-top: 20px;margin-bottom: 0;}
+.archive-uppdragstagare .spotlight-contact{margin-bottom: 10px;}
+.archive-uppdragstagare a.btn{margin-top: 10px;color:#5A5A5A;}
+body.archive article .archive-content{border-bottom: none;}
+
+
+
+
+

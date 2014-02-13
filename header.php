@@ -41,7 +41,7 @@
                   <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="<?php bloginfo('url'); ?>">
-                  Egenutgivare.nu
+                  <i class="fa fa-home"></i>
                 </a>
               </div>
 
@@ -65,10 +65,10 @@
 
     <div class="container" id="">
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-sm-12">
           <div id="rep-splash-area">
             <div id="logo"><a class="" href="<?php bloginfo('url'); ?>">Egenutgivare.nu</a></div>
-            <p><?php echo get_bloginfo('description'); ?></p>
+            <!--p>< ?php echo get_bloginfo('description'); ? ></p-->
           </div>
         </div>
       </div>
@@ -76,8 +76,8 @@
     <div id="headline-puff">
       <div class="container">
         <div class="row">
-          <div class="col-md-12">
-            Donec id elit non mi porta <a href="/">gravida at eget metus</a>. Vestibulum id ligula porta felis euismod semper.
+          <div class="col-sm-12">
+            Här finner du idéer och inspiration som hjälper dig i din professionella egenutgivning. <a href="/blogg/">Läs om författarkollegornas erfarenheter</a>
           </div>
         </div>
       </div>

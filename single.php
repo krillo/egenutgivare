@@ -2,11 +2,11 @@
 <div class="container">
   <div class="row">
     <?php //if (function_exists('dimox_breadcrumbs')) dimox_breadcrumbs(); ?>
-    <div class="col-md-2" id="nav-sidebar">
+    <div class="col-sm-2" id="nav-sidebar">
       <?php if (function_exists('rep_page_hierarchy')) rep_page_hierarchy(); ?>
     </div>
     <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-        <div class="col-md-7">
+        <div class="col-sm-7">
           <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
             <h1><?php the_title(); ?></h1>
             <?php the_content(); ?>
@@ -17,11 +17,11 @@
       endwhile;
     else:
       ?>
-      <div class="col-md-7">
+      <div class="col-sm-7">
         <p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
       </div>
     <?php endif; ?>  
-    <div class="col-md-3">
+    <div class="col-sm-3">
       <?php include 'snippets/eu_sidebar.php';?>
     </div>
   </div>

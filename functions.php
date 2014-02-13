@@ -52,7 +52,7 @@ function printPostsPerPosttype($posttype = 'litteraturtips', $nbr = 1, $random =
       $img = wp_get_attachment_image(get_field('bild'), 'bokomslag');
       $author = get_field('forfattare');
       $text = mb_substr(get_field('text'), 0, $nbrDigits);
-      $isbn = get_field('isbn');
+      $url = get_field('isbn');  //notis its is now a link!!
       $readingbox .= <<<RB
         <div class="posttype-container $zebra_class">
           <div class="posttype-img">
@@ -62,7 +62,7 @@ function printPostsPerPosttype($posttype = 'litteraturtips', $nbr = 1, $random =
             <b>$title</b><br/>
             $author<br/>
             $text<br/>
-            <a href="http://clk.tradedoubler.com/click?p=21&a=2214064&g=17284614&url=http://www.adlibris.com/se/product.aspx?isbn=$isbn" target="" class="">Läs mer om boken</a>
+            <a href="$url" target="" class="">Läs mer om boken</a>
           </div>
         </div>              
 RB;
@@ -114,8 +114,8 @@ function eu_printPostsPerCat($category = 'aktuellt', $nbr = 1, $offset = 0, $nbr
 <div class="cat-container $extraclass">
   <section>
     <h2>$title</h2>
-    <div class="pub-info"><i class="fa fa-calendar-o"></i><time pubdate="pubdate">$modified_date</time> <i class="fa fa-pencil"></i>Skriven av $author <i class="fa fa-tags"></i>$the_tags</div>
-    <div class="pub-info-small">Av $author</div>
+    <div class="pub-info"><i class="fa fa-calendar-o"></i><time pubdate="pubdate">$modified_date</time> <i class="fa fa-tags"></i>$the_tags</div>
+    <div class="pub-info-small"><i class="fa fa-calendar-o"></i><time pubdate="pubdate">$modified_date</time></div>
     <div>
       $img
       <div class="cat-content">
@@ -157,7 +157,7 @@ function printSpotlight($posttype = 'uppdragstagare', $nbr = 1, $random = true, 
   $loop = new WP_Query($args);
   if ($loop->have_posts()):
     while ($loop->have_posts()) : $loop->the_post();
-      $content = mb_substr(get_field('om_mig'), 0, $nbrDigits);
+      $content = mb_substr(get_field('om_mig'), 0, $nbrDigits) . '...';
       $name = get_the_title();
       $guid = get_permalink();
       $img = wp_get_attachment_image(get_field('bild'), 'profile-thumb');
@@ -168,7 +168,7 @@ function printSpotlight($posttype = 'uppdragstagare', $nbr = 1, $random = true, 
       $readingbox .= <<<RB
              <div class="spotlight-border">
              <div class="spotlight">
-              <div class="col-md-8">
+              <div class="col-sm-8">
                 <div class="spotlight-heading">
                   <h2>$name</h2><div class="spotlight-info"> - $work</div>
                 </div>
@@ -179,7 +179,7 @@ function printSpotlight($posttype = 'uppdragstagare', $nbr = 1, $random = true, 
                 </div>
                 <a href="$guid" class="btn btn-primary spotlight-button" style="float:left;">Läs mer om $name</a>
               </div>
-              <div class="col-md-4">
+              <div class="col-sm-4">
                 $img
               </div>
             </div>              
