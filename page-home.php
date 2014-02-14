@@ -16,7 +16,7 @@ get_header();
             <div class="cat-container-border">
               <?php if (function_exists('printPostsPerCat')) eu_printPostsPerCat('aktuellt', 1, 0, 300); ?>
             </div>
-            <a href="/" class="btn btn-primary" style="float:right;">Läs mer av de senaste</a>
+            <a href="/blogg/" class="btn btn-primary" style="float:right;">Läs fler inlägg</a>
           </div>  
           <div class="col-sm-4 rep-inner-right">
             <div class="cat-container-border">
@@ -46,7 +46,7 @@ get_header();
                     </div>
                     <div class="clearfix"></div>
                     <div class="spotlight-txt">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id dolor id nibh ultricies vehicula ut id elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.Morbi leo risus, porta ac consectetur ac, vestibulum at
+                      <?php the_field('tryckupphandling'); ?>
                     </div>
                     <a href="/tryckupphandling/" class="btn btn-primary spotlight-button" style="float:right;">Läs mer om tryckupphandling</a>
                   </div>
@@ -71,11 +71,7 @@ get_header();
           $rc->rep_carousel('rep-carousel', false);
         ?>
       </div>
-      <div class="sidebar-object">
-        <ul>
-          <?php if (!function_exists('dynamic_sidebar') || !dynamic_sidebar("sidebar_info")) : endif; ?>   
-        </ul>
-      </div>
+      <?php include 'snippets/eu_widget_sidebar.php'; ?>
       <div class="sidebar-object">
         <h3>Litteraturtips</h3>
         <?php if (function_exists('printPostsPerPosttype')) printPostsPerPosttype('litteraturtips', 5, true); ?>

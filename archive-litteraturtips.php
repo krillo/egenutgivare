@@ -1,11 +1,11 @@
 <?php get_header(); ?>
 <div class="container">
   <div class="row" id="">
-    <div class="col-sm-2" id="nav-sidebar">
-      <?php if (function_exists('rep_page_hierarchy')) rep_page_hierarchy(); ?>
+    <div class="col-sm-3" id="nav-sidebar">
+      <?php include 'snippets/eu_widget_sidebar.php';?>
     </div>  
     <?php if (have_posts()) : ?>
-      <div class="col-sm-7">
+      <div class="col-sm-6">
         <h1><?php single_cat_title(); ?></h1>
         <?php while (have_posts()) : the_post(); ?>
           <div class="row">

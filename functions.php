@@ -48,10 +48,11 @@ function printPostsPerPosttype($posttype = 'litteraturtips', $nbr = 1, $random =
         $zebra_class = ''; 
       }
       $i++;  
-      $title = get_the_title();
       $img = wp_get_attachment_image(get_field('bild'), 'bokomslag');
-      $author = get_field('forfattare');
-      $text = mb_substr(get_field('text'), 0, $nbrDigits);
+      $title = mb_substr(get_the_title(), 0, 32). '..';
+      $author = mb_substr(get_field('forfattare'), 0, 32). '..';
+      $text = mb_substr(get_field('text'), 0, 32);
+      $text = $text == ''? $text : $text. '..';
       $url = get_field('isbn');  //notis its is now a link!!
       $readingbox .= <<<RB
         <div class="posttype-container $zebra_class">
@@ -62,7 +63,7 @@ function printPostsPerPosttype($posttype = 'litteraturtips', $nbr = 1, $random =
             <b>$title</b><br/>
             $author<br/>
             $text<br/>
-            <a href="$url" target="" class="">Läs mer om boken</a>
+            <a href="$url" target="_blank" class="">Läs mer om boken</a>
           </div>
         </div>              
 RB;
@@ -113,7 +114,7 @@ function eu_printPostsPerCat($category = 'aktuellt', $nbr = 1, $offset = 0, $nbr
         $readingbox .= <<<RB
 <div class="cat-container $extraclass">
   <section>
-    <h2>$title</h2>
+    <h2><a href="$guid">$title</a></h2>
     <div class="pub-info"><i class="fa fa-calendar-o"></i><time pubdate="pubdate">$modified_date</time> <i class="fa fa-tags"></i>$the_tags</div>
     <div class="pub-info-small"><i class="fa fa-calendar-o"></i><time pubdate="pubdate">$modified_date</time></div>
     <div>
@@ -170,10 +171,9 @@ function printSpotlight($posttype = 'uppdragstagare', $nbr = 1, $random = true, 
              <div class="spotlight">
               <div class="col-sm-8">
                 <div class="spotlight-heading">
-                  <h2>$name</h2><div class="spotlight-info"> - $work</div>
+                  <h2><a href="$guid">$name</a></h2><div class="spotlight-info"> - $work</div>
                 </div>
-                <div class="clearfix"></div>
-                <div class="spotlight-contact"><i class="fa fa-home" style="padding-left:0;"></i><a href="$homepage" target="_blank">$homepage</a>  <i class="fa fa-envelope"></i><a href="mailto:$email" target="_blank">$email</a> <i class="fa fa-phone-square"></i><a href="tel:+$phone">$phone</a></div>
+                <div class="clearfix"></div>      
                 <div class="spotlight-txt">
                   $content
                 </div>
