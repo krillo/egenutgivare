@@ -11,7 +11,7 @@
  */
 include_once 'bin/eu_posttypes.php';
 include_once get_template_directory() . "/bin/ReptiloCarousel.php";
-//include_once get_template_directory()."/bin/ReptiloFAQ.php";
+include_once get_template_directory()."/bin/ReptiloFAQ.php";
 
 /**
  * custom size for images

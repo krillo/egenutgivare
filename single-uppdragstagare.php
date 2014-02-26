@@ -13,9 +13,15 @@
                 <h2><?php the_title(); ?></h2>
                 <div class="spotlight-contact">
                   <i class="fa fa-info-circle" style="padding-left:0;"></i><?php the_field('yrke'); ?><br/>
+                  <?php if (get_field('hemsida')): ?>
                   <i class="fa fa-home" style="padding-left:0;"></i><a href="<?php the_field('hemsida'); ?>" target="_blank"><?php the_field('hemsida'); ?></a><br/> 
+                  <?php endif; ?>
+                  <?php if(get_field('e-mail')): ?>
                   <i class="fa fa-envelope" style="padding-left:0;"></i><a href="mailto:<?php the_field('e-mail'); ?>" target="_blank"><?php the_field('e-mail'); ?></a><br/> 
+                  <?php endif; ?>
+                  <?php if(get_field('telefon')): ?>
                   <i class="fa fa-phone-square" style="padding-left:0;"></i><a href="tel:+<?php the_field('telefon'); ?>"><?php the_field('telefon'); ?></a>
+                  <?php endif; ?>
                   <br/>
                 </div>
               </header>
@@ -24,6 +30,7 @@
               </div>  
               <div class="uppdragstagare-content col-sm-12">
                 <?php the_field('om_mig') ?>
+		<p><?php the_field('contact_form'); ?></p>
               </div>
             </article>
           </div>

@@ -11,7 +11,7 @@
           <div class="row">
             <article id="post-<?php the_ID(); ?>" class="col-sm-12">
               <header>
-                <h2><?php the_title(); ?></h2>
+                <h2><a href="<?php the_guid(); ?>"><?php the_title(); ?></a></h2>
                 <div class="pub-info"><i class="fa fa-calendar-o"></i><time pubdate="pubdate"><?php the_modified_date(); ?></time> <i class="fa fa-thumb-tack"></i><?php the_category(', '); ?>  <i class="fa fa-tags"></i> <?php the_tags(' '); ?></div>
               </header>
               <div class="archive-content"><?php the_excerpt(); ?>
