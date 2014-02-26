@@ -1,12 +1,9 @@
 <?php
 /**
- * 
+ * Page tryckupphandling shows the FAQ listing
  * 
  */
 ?>
-
-
-
 <?php get_header();
 ?>
 <div class="container">
