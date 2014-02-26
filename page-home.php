@@ -20,13 +20,13 @@ get_header();
           </div>  
           <div class="col-sm-4 rep-inner-right">
             <div class="cat-container-border">
-              <?php if (function_exists('printPostsPerCat')) eu_printPostsPerCat('aktuellt', 1, 1, 60, 'cat-minimum'); ?>
+              <?php if (function_exists('printPostsPerCat')) eu_printPostsPerCat('aktuellt', 1, 1, 60, 'cat-minimum', 30); ?>
             </div>
             <div class="cat-container-border">
-              <?php if (function_exists('printPostsPerCat')) eu_printPostsPerCat('aktuellt', 1, 2, 60, 'cat-minimum'); ?>
+              <?php if (function_exists('printPostsPerCat')) eu_printPostsPerCat('aktuellt', 1, 2, 60, 'cat-minimum', 30); ?>
             </div>
             <div class="cat-container-border">
-              <?php if (function_exists('printPostsPerCat')) eu_printPostsPerCat('aktuellt', 1, 3, 60, 'cat-minimum'); ?>
+              <?php if (function_exists('printPostsPerCat')) eu_printPostsPerCat('aktuellt', 1, 3, 60, 'cat-minimum', 30); ?>
             </div>
 
           </div>  

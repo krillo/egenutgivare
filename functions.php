@@ -92,7 +92,11 @@ function eu_printPostsPerCat($category = 'aktuellt', $nbr = 1, $offset = 0, $nbr
       if ($i >= $offset) {
         $guid = get_permalink();
         if ($extraclass == 'cat-minimum') {  //small version
-          $title = mb_substr(get_the_title(), 0, $nbrDigitsTitle);
+          if(strlen(get_the_title()) > $nbrDigitsTitle){
+            $title = mb_substr(get_the_title(), 0, $nbrDigitsTitle).'...';
+          } else {
+            $title = get_the_title();
+          }
           $content = mb_substr(get_the_excerpt(), 0, $nbrDigits) . ' &nbsp;' . '<a href="' . $guid . '" target="" class="">Läs mer...</a>';
         } else {
           $title = get_the_title();
